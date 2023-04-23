@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Andxre Blog</title>
+    <link>https://andxre.github.io/</link>
+    <description>Recent content on Andxre Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 22 Apr 2023 18:13:43 -0700</lastBuildDate><atom:link href="https://andxre.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>First</title>
+      <link>https://andxre.github.io/posts/first/</link>
+      <pubDate>Sat, 22 Apr 2023 18:13:43 -0700</pubDate>
+      
+      <guid>https://andxre.github.io/posts/first/</guid>
+      <description>Hello World This is a test of hugo</description>
+      <content>&lt;h1 id=&#34;hello-world&#34;&gt;Hello World&lt;/h1&gt;
+&lt;p&gt;This is a test of hugo&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>
