@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Andxre Blog</title>
+    <title>Andxre</title>
     <link>https://andxre.github.io/</link>
-    <description>Recent content on Andxre Blog</description>
+    <description>Recent content on Andxre</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://andxre.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Sat, 22 Apr 2023 19:04:38 -0700</lastBuildDate><atom:link href="https://andxre.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Welcome In</title>
+      <link>https://andxre.github.io/posts/welcome-in/</link>
+      <pubDate>Sat, 22 Apr 2023 19:04:38 -0700</pubDate>
+      
+      <guid>https://andxre.github.io/posts/welcome-in/</guid>
+      <description>Hey there, welcome to my first blog post!
+Who Am I? My name is Andre and I am Software Engineer in Seattle. I am currently working at Expedia Group.</description>
+      <content>&lt;p&gt;Hey there, welcome to my first blog post!&lt;/p&gt;
+&lt;h1 id=&#34;who-am-i&#34;&gt;Who Am I?&lt;/h1&gt;
+&lt;p&gt;My name is &lt;strong&gt;Andre&lt;/strong&gt; and I am Software Engineer in Seattle. I am currently
+working at Expedia Group.&lt;/p&gt;
+</content>
+    </item>
+    
   </channel>
 </rss>
