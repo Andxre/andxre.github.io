@@ -14,7 +14,8 @@
       
       <guid>https://andxre.github.io/posts/second/</guid>
       <description>Hey There This is a second post testing some of the markdown features
-Subheading 2 List Item Nest Listed Item Subheading 3 Numbered List Numbered List 2 :o Nested Numbered List </description>
+Subheading 2 List Item Nest Listed Item Nested LI 2 Subheading 3 Numbered List Numbered List 2 :o Nested Numbered List Subheading 4 Here is an example code block
+#include &amp;lt;iostream&amp;gt; int main() { std::cout &amp;lt;&amp;lt; &amp;#34;Hello World&amp;#34; &amp;lt;&amp;lt; std::endl; return 0; } </description>
       <content>&lt;h1 id=&#34;hey-there&#34;&gt;Hey There&lt;/h1&gt;
 &lt;p&gt;This is a second post testing some of the markdown features&lt;/p&gt;
 &lt;h2 id=&#34;subheading-2&#34;&gt;Subheading 2&lt;/h2&gt;
@@ -22,6 +23,7 @@ Subheading 2 List Item Nest Listed Item Subheading 3 Numbered List Numbered List
 &lt;li&gt;List Item
 &lt;ul&gt;
 &lt;li&gt;Nest Listed Item&lt;/li&gt;
+&lt;li&gt;Nested LI 2&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -34,7 +36,15 @@ Subheading 2 List Item Nest Listed Item Subheading 3 Numbered List Numbered List
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-</content>
+&lt;h4 id=&#34;subheading-4&#34;&gt;Subheading 4&lt;/h4&gt;
+&lt;p&gt;Here is an example code block&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	std&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello World&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;endl;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
     </item>
     
     <item>
