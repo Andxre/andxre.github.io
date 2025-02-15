@@ -4,20 +4,24 @@ draft = false
 title = 'About'
 +++
 
-### Andre
+### Andre Dasalla
 
-Software Engineer based in Seattle, WA.
+Software Engineer based in Seattle, WA. General interest in distributed systems & computer networks.
 
 ### Work Experience
 
-#### Circle (May 2024 - Present)
+**Software Engineer** @ [Circle](https://circle.com)  
+May 2024 - Present
 
 - Liquidity Experience
-  - NextJS
 
-#### Expedia (August 2022 - May 2024)
+**Software Development Engineer** @ [Expedia Group](https://expedia.com)  
+August 2022 - May 2024
 
-- Edge
-  - Global Reverse Proxy
-  - Bot Classification
-- Order Search
+- Edge Engineering
+- Order Management Services
+
+### Education
+
+**B.S. Computer Science** @ Seattle University  
+2018-2022
