@@ -13,6 +13,7 @@ Software Engineer based in Seattle, WA. General interest in distributed systems 
 **Software Engineer** @ [Circle](https://circle.com)  
 May 2024 - Present
 
+- Indirect Liquidity Payments
 - Liquidity Experience
 
 **Software Development Engineer** @ [Expedia Group](https://expedia.com)  
