@@ -2,11 +2,21 @@
 <html lang="{{ $.Site.LanguageCode }}">
     {{- partial "head.html" . -}}
     <body a="{{ $.Site.Params.theme_config.appearance | default "auto" }}">
-        <main class="page-content" aria-label="Content">
-            <div class="w">
-                {{- block "main" . }}{{- end }}
-                {{ partial "footer.html" }}
-            </div>
-        </main>
+        <div class="site-shell">
+            <header class="site-header">
+                <div class="w site-header__inner">
+                    <a class="site-logo" href="{{ "/" | relURL }}">{{ $.Site.Title }}</a>
+                    {{ with $.Site.Params.description }}
+                        <span class="site-tagline">{{ . }}</span>
+                    {{ end }}
+                </div>
+            </header>
+            <main class="page-content" aria-label="Content">
+                <div class="w page-content__inner">
+                    {{- block "main" . }}{{- end }}
+                    {{ partial "footer.html" }}
+                </div>
+            </main>
+        </div>
     </body>
 </html>

@@ -1,12 +1,55 @@
 {{ define "main" }}
+    {{ $scratch := newScratch }}
+    {{ range $.Site.Data.menu.entries }}
+        {{ if not ($scratch.Get "primary") }}
+            {{ with .entries }}
+                {{ range . }}
+                    {{ if and (not ($scratch.Get "primary")) .url }}
+                        {{ $scratch.Set "primary" (dict "url" .url "title" .title) }}
+                    {{ end }}
+                {{ end }}
+            {{ end }}
+        {{ end }}
+        {{ if and (not ($scratch.Get "secondary")) .post_list }}
+            {{ with .post_list }}
+                {{ if .show_more_url }}
+                    {{ $scratch.Set "secondary" (dict "url" .show_more_url "title" (.show_more_text | default "See more")) }}
+                {{ end }}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+    {{ $primary := $scratch.Get "primary" }}
+    {{ $secondary := $scratch.Get "secondary" }}
 
-<header>
-    <h1>{{ $.Site.Title }}</h1>
-    {{- if $.Site.Params.theme_config.show_description -}}
-        <p>{{ $.Site.Params.description }}</p>
-    {{- end -}}
-</header>
-{{ .Content }}
-{{ partial "menu_item.html" (dict "context" . "collection" $.Site.Data.menu.entries) }}
-
+    <section class="hero">
+        <span class="hero__badge">{{ $.Site.Params.hero.eyebrow | default "Welcome" }}</span>
+        <h1 class="hero__title">{{ $.Site.Title }}</h1>
+        {{ with $.Site.Params.hero.tagline }}
+            <p class="hero__lead">{{ . }}</p>
+        {{ else if $.Site.Params.description }}
+            <p class="hero__lead">{{ $.Site.Params.description }}</p>
+        {{ else }}
+            <p class="hero__lead">Personal notes, projects, and ideas by {{ $.Site.Title }}.</p>
+        {{ end }}
+        <div class="hero__actions">
+            {{ with $primary }}
+                {{ $url := .url }}
+                {{ $isExternal := or (hasPrefix $url "http") (hasPrefix $url "mailto:") (hasPrefix $url "tel:") (hasPrefix $url "#") }}
+                {{ $formatted := cond $isExternal $url ($url | relURL) }}
+                <a class="button" href="{{ $formatted }}">{{ .title }}</a>
+            {{ end }}
+            {{ with $secondary }}
+                {{ $url := .url }}
+                {{ $isExternal := or (hasPrefix $url "http") (hasPrefix $url "mailto:") (hasPrefix $url "tel:") (hasPrefix $url "#") }}
+                {{ $formatted := cond $isExternal $url ($url | relURL) }}
+                <a class="button button--ghost" href="{{ $formatted }}">{{ .title }}</a>
+            {{ else }}
+                <a class="button button--ghost" href="#site-sections">Browse</a>
+            {{ end }}
+        </div>
+    </section>
+    {{ .Content }}
+    <div class="menu-wrapper" id="site-sections">
+        {{ partial "menu_item.html" (dict "context" . "collection" $.Site.Data.menu.entries "level" 0) }}
+    </div>
 {{ end }}
