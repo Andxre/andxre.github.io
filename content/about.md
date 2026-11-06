@@ -4,11 +4,11 @@ draft = false
 title = 'Andre Dasalla'
 +++
 
-Software engineer based in Seattle, WA. General interest in distributed systems & computer networks.
+Senior software engineer based in Seattle, WA. General interest in distributed systems & computer networks.
 
 ## Experience
 
-**Software Engineer** — [Circle](https://circle.com)
+**Senior Software Engineer** — [Circle](https://circle.com)
 
 *May 2024 – Present*
 

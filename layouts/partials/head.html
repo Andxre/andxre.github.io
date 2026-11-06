@@ -12,13 +12,13 @@
     {{- end -}}
   {{- end -}}
 
-  <title>{{ if .IsHome }}{{ site.Title }} — Software Engineer{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+  <title>{{ if .IsHome }}{{ site.Title }} — Senior Software Engineer{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
   <meta name="description" content="{{ $description }}" />
   <meta name="author" content="{{ site.Params.author | default site.Title }}" />
   <link rel="canonical" href="{{ .Permalink }}" />
 
   <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
-  <meta property="og:title" content="{{ if .IsHome }}{{ site.Title }} — Software Engineer{{ else }}{{ .Title }}{{ end }}" />
+  <meta property="og:title" content="{{ if .IsHome }}{{ site.Title }} — Senior Software Engineer{{ else }}{{ .Title }}{{ end }}" />
   <meta property="og:description" content="{{ $description }}" />
   <meta property="og:url" content="{{ .Permalink }}" />
   <meta property="og:site_name" content="{{ site.Title }}" />
