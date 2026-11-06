@@ -31,9 +31,14 @@
     ordered    = false
 
 [params]
+  author      = "Andre Dasalla"
+  description = "Software engineer based in Seattle, WA. General interest in distributed systems & computer networks."
+  github      = "https://github.com/andxre"
+  favicon     = "/favicon.svg"
+
   [params.theme_config]
     appearance        = "auto"
-    back_home_text    = "home"
-    date_format       = "2006-01-02"
+    back_home_text    = "back"
+    date_format       = "Jan 2, 2006"
     isListGroupByDate = false
-    isShowFooter      = false
+    isShowFooter      = true

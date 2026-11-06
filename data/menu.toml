@@ -3,15 +3,15 @@ title = "info"
 
   [[entries.entries]]
   title = "about"
-  url="about"
+  url="about/"
+
+  [[entries.entries]]
+  title = "writing"
+  url = "posts/"
 
   [[entries.entries]]
   title = "github"
   url = "https://github.com/andxre"
-
-  [[entries.entries]]
-  title="rss"
-  url="index.xml"
 
 
 [[entries]]

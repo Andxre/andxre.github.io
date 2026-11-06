@@ -1,21 +1,17 @@
 {{ define "main" }}
+<article class="article">
+    <div class="article__meta">
+        <a href="{{ "" | relURL }}">← back</a>
+    </div>
 
-<h1>{{ .Title }}</h1>
+    <h1>{{ .Title }}</h1>
 
-{{ .Content }}
+    {{ .Content }}
 
-<!-- divide post list by year  -->
-{{ if  .Site.Params.theme_config.isListGroupByDate  }}
-    {{ range .Pages.GroupByDate "2006 Year" }}
-    <p>{{ .Key }}</p>
-    <ul>
-        {{ range .Pages }}
-            <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-        {{ end }}
-    </ul>
+    {{ if .Pages }}
+        {{ partial "post_list.html" (dict "context" . "section" .Section) }}
+    {{ else }}
+        <p class="empty">No posts yet — this space is ready.</p>
     {{ end }}
-{{ else }}
-    {{ partial "post_list.html" (dict "context" . "section" .Section)}}
-{{ end }}
-
+</article>
 {{ end }}

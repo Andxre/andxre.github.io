@@ -1,22 +1,36 @@
 <!DOCTYPE html>
-<html lang="{{ $.Site.LanguageCode }}">
+<html lang="{{ site.LanguageCode | default "en-us" }}">
     {{- partial "head.html" . -}}
-    <body a="{{ $.Site.Params.theme_config.appearance | default "auto" }}">
+    <body a="{{ site.Params.theme_config.appearance | default "auto" }}">
+        <a class="skip-link" href="#content">Skip to content</a>
         <div class="site-shell">
             <header class="site-header">
                 <div class="w site-header__inner">
-                    <a class="site-logo" href="{{ "/" | relURL }}">{{ $.Site.Title }}</a>
-                    {{ with $.Site.Params.description }}
-                        <span class="site-tagline">{{ . }}</span>
-                    {{ end }}
+                    <a class="site-logo" href="{{ "/" | relURL }}">
+                        <span class="site-logo__seal" aria-hidden="true"></span>
+                        {{ site.Title }}
+                    </a>
+                    <nav class="site-nav" aria-label="Main">
+                        {{- $info := where site.Data.menu.entries "title" "info" -}}
+                        {{- with (index $info 0) -}}
+                            {{- range .entries -}}
+                                {{- $url := .url -}}
+                                {{- $isExternal := or (hasPrefix $url "http") (hasPrefix $url "mailto:") -}}
+                                <a class="site-nav__link" href="{{ cond $isExternal $url ($url | relURL) }}">{{ .title }}</a>
+                            {{- end -}}
+                        {{- else -}}
+                            <a class="site-nav__link" href="{{ "about/" | relURL }}">about</a>
+                            <a class="site-nav__link" href="https://github.com/andxre">github</a>
+                        {{- end -}}
+                    </nav>
                 </div>
             </header>
-            <main class="page-content" aria-label="Content">
+            <main class="page-content" id="content" aria-label="Content">
                 <div class="w page-content__inner">
                     {{- block "main" . }}{{- end }}
-                    {{ partial "footer.html" }}
                 </div>
             </main>
+            {{ partial "footer.html" . }}
         </div>
     </body>
 </html>

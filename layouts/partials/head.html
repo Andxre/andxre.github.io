@@ -2,28 +2,47 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  {{ if .IsPage }} <meta name="description" content="{{ .Summary }}">  {{ end }}
 
-  <title>
-    {{ if not .IsHome }}
-      {{ .Title }}
-    {{ else }}
-      {{ $.Site.Title }}
-    {{ end }}
-  </title>
+  {{- $description := site.Params.description -}}
+  {{- if .IsPage -}}
+    {{- with .Description -}}
+      {{- $description = . -}}
+    {{- else -}}
+      {{- $description = .Summary | plainify | truncate 160 -}}
+    {{- end -}}
+  {{- end -}}
+
+  <title>{{ if .IsHome }}{{ site.Title }} — Software Engineer{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ $description }}" />
+  <meta name="author" content="{{ site.Params.author | default site.Title }}" />
+  <link rel="canonical" href="{{ .Permalink }}" />
+
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+  <meta property="og:title" content="{{ if .IsHome }}{{ site.Title }} — Software Engineer{{ else }}{{ .Title }}{{ end }}" />
+  <meta property="og:description" content="{{ $description }}" />
+  <meta property="og:url" content="{{ .Permalink }}" />
+  <meta property="og:site_name" content="{{ site.Title }}" />
+  <meta name="twitter:card" content="summary" />
+
+  {{ with .OutputFormats.Get "RSS" }}
+    <link rel="alternate" type="application/rss+xml" href="{{ .Permalink }}" title="{{ site.Title }}" />
+  {{ end }}
+
+  <meta name="theme-color" content="#f4efdf" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#141b20" media="(prefers-color-scheme: dark)" />
+
+  <link rel="icon" type="image/svg+xml" href="{{ site.Params.favicon | relURL }}" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=PT+Serif:wght@400;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Shippori+Mincho:wght@500;600;700&display=swap"
     rel="stylesheet"
   />
 
-
-  <link rel="shortcut icon" type="image/x-icon" href="{{ $.Site.Params.favicon | relURL }}" />
   {{ $options := (dict "outputStyle" "compressed" "enableSourceMap" (not hugo.IsProduction)) }}
   {{ $sass := resources.Get "css/main.scss" }}
   {{ $style := $sass | css.Sass $options | resources.Fingerprint "sha512" }}
-  <link rel="stylesheet" href="{{ $style.Permalink | relURL }}" integrity="{{ $style.Data.Integrity }}" />
+  <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" />
   {{ if .Params.mathjax }} {{ partial "mathjax.html" . }} {{ end }}
 </head>

@@ -1,55 +1,88 @@
 {{ define "main" }}
-    {{ $scratch := newScratch }}
-    {{ range $.Site.Data.menu.entries }}
-        {{ if not ($scratch.Get "primary") }}
-            {{ with .entries }}
-                {{ range . }}
-                    {{ if and (not ($scratch.Get "primary")) .url }}
-                        {{ $scratch.Set "primary" (dict "url" .url "title" .title) }}
-                    {{ end }}
-                {{ end }}
-            {{ end }}
-        {{ end }}
-        {{ if and (not ($scratch.Get "secondary")) .post_list }}
-            {{ with .post_list }}
-                {{ if .show_more_url }}
-                    {{ $scratch.Set "secondary" (dict "url" .show_more_url "title" (.show_more_text | default "See more")) }}
-                {{ end }}
-            {{ end }}
-        {{ end }}
-    {{ end }}
-    {{ $primary := $scratch.Get "primary" }}
-    {{ $secondary := $scratch.Get "secondary" }}
+    {{- $posts := where site.RegularPages.ByDate.Reverse "Section" "posts" -}}
+    {{- $github := site.Params.github | default "https://github.com/andxre" -}}
 
     <section class="hero">
-        <span class="hero__badge">{{ $.Site.Params.hero.eyebrow | default "Welcome" }}</span>
-        <h1 class="hero__title">{{ $.Site.Title }}</h1>
-        {{ with $.Site.Params.hero.tagline }}
-            <p class="hero__lead">{{ . }}</p>
-        {{ else if $.Site.Params.description }}
-            <p class="hero__lead">{{ $.Site.Params.description }}</p>
-        {{ else }}
-            <p class="hero__lead">Personal notes, projects, and ideas by {{ $.Site.Title }}.</p>
-        {{ end }}
-        <div class="hero__actions">
-            {{ with $primary }}
-                {{ $url := .url }}
-                {{ $isExternal := or (hasPrefix $url "http") (hasPrefix $url "mailto:") (hasPrefix $url "tel:") (hasPrefix $url "#") }}
-                {{ $formatted := cond $isExternal $url ($url | relURL) }}
-                <a class="button" href="{{ $formatted }}">{{ .title }}</a>
-            {{ end }}
-            {{ with $secondary }}
-                {{ $url := .url }}
-                {{ $isExternal := or (hasPrefix $url "http") (hasPrefix $url "mailto:") (hasPrefix $url "tel:") (hasPrefix $url "#") }}
-                {{ $formatted := cond $isExternal $url ($url | relURL) }}
-                <a class="button button--ghost" href="{{ $formatted }}">{{ .title }}</a>
-            {{ else }}
-                <a class="button button--ghost" href="#site-sections">Browse</a>
-            {{ end }}
+        <div class="hero__copy">
+            <p class="eyebrow"><span class="eyebrow__mark" aria-hidden="true"></span>Software Engineer · Seattle, WA</p>
+            <h1 class="hero__title">
+                <span class="hero__title-line">Andre</span>
+                <span class="hero__title-line hero__title-accent">Dasalla</span>
+            </h1>
+            <p class="hero__lead">General interest in distributed systems &amp; computer networks. Currently a software engineer at Circle Payments Network, previously Expedia Group.</p>
+            <div class="hero__actions">
+                <a class="button" href="{{ "about/" | relURL }}">About me <span aria-hidden="true">→</span></a>
+                <a class="button button--ghost" href="{{ $github }}">GitHub <span aria-hidden="true">↗</span></a>
+            </div>
+        </div>
+        <div class="hero__art" role="img" aria-label="Line drawing of layered Kanagawa waves beneath a vermilion sun">
+            {{ partial "wave-art.html" . }}
+            {{ partial "wave-art-wide.html" . }}
+            <p class="hero__caption">after Hokusai · 1831</p>
         </div>
     </section>
-    {{ .Content }}
-    <div class="menu-wrapper" id="site-sections">
-        {{ partial "menu_item.html" (dict "context" . "collection" $.Site.Data.menu.entries "level" 0) }}
-    </div>
+
+    <section class="facts" aria-label="At a glance">
+        <div class="fact">
+            <p class="fact__label">Now</p>
+            <p class="fact__value">Software Engineer, Circle Payments Network</p>
+            <p class="fact__detail">Indirect Liquidity Payments</p>
+        </div>
+        <div class="fact">
+            <p class="fact__label">Before</p>
+            <p class="fact__value">Expedia Group</p>
+            <p class="fact__detail">Edge Engineering · Order Management</p>
+        </div>
+        <div class="fact">
+            <p class="fact__label">Education</p>
+            <p class="fact__value">Seattle University</p>
+            <p class="fact__detail">B.S. Computer Science, 2018–2022</p>
+        </div>
+    </section>
+
+    <section class="section" aria-labelledby="index-heading">
+        <div class="section__head">
+            <h2 class="section__title" id="index-heading"><span class="section__num">01</span>Index</h2>
+        </div>
+        <div class="index-grid">
+            <a class="index-card" href="{{ "about/" | relURL }}">
+                <div class="index-card__top">
+                    <span class="index-card__num">01</span>
+                    <span class="index-card__arrow" aria-hidden="true">↗</span>
+                </div>
+                <h3 class="index-card__title">About</h3>
+                <p class="index-card__desc">Work, study, and the short version of who I am.</p>
+            </a>
+            <a class="index-card" href="{{ $github }}">
+                <div class="index-card__top">
+                    <span class="index-card__num">02</span>
+                    <span class="index-card__arrow" aria-hidden="true">↗</span>
+                </div>
+                <h3 class="index-card__title">GitHub</h3>
+                <p class="index-card__desc">Code, experiments, and things in progress.</p>
+            </a>
+            <a class="index-card" href="{{ "index.xml" | relURL }}">
+                <div class="index-card__top">
+                    <span class="index-card__num">03</span>
+                    <span class="index-card__arrow" aria-hidden="true">↗</span>
+                </div>
+                <h3 class="index-card__title">RSS</h3>
+                <p class="index-card__desc">Follow new writing in your reader.</p>
+            </a>
+        </div>
+    </section>
+
+    <section class="section" aria-labelledby="writing-heading">
+        <div class="section__head">
+            <h2 class="section__title" id="writing-heading"><span class="section__num">02</span>Writing</h2>
+            {{ if $posts }}
+                <a class="section__more" href="{{ "posts/" | relURL }}">All posts →</a>
+            {{ end }}
+        </div>
+        {{ if $posts }}
+            {{ partial "post_list.html" (dict "context" . "section" "posts" "limit" 5) }}
+        {{ else }}
+            <p class="empty">No posts yet — this space is ready.</p>
+        {{ end }}
+    </section>
 {{ end }}

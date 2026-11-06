@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Kanagawa wave">
+    <rect width="64" height="64" rx="10" fill="#f4efdf"/>
+    <circle cx="41" cy="24" r="12" fill="#b8422c"/>
+    <path d="M4 45 C 14 39 22 45 30 41 C 38 37 44 31 52 33 C 56 34 60 37 62 39 L 62 60 L 4 60 Z" fill="#1d4b68"/>
+    <path d="M4 45 C 14 39 22 45 30 41 C 38 37 44 31 52 33 C 56 34 60 37 62 39" fill="none" stroke="#f4efdf" stroke-width="2" stroke-linecap="round"/>
+    <path d="M52 33 C 58 32 60 38 55 41 C 51 43 48 40 49 37" fill="none" stroke="#f4efdf" stroke-width="1.6" stroke-linecap="round"/>
+</svg>
